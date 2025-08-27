@@ -100,14 +100,17 @@ with st.sidebar:
     st.markdown("---")
     st.header("Costs you control (paste live quotes)")
     st.caption("Enter real numbers you see on Avis / hotel sites for your dates.")
-    rental_daily = st.number_input("Avis daily base rate ($/day)", 0.0, 1000.0, 55.0, step=1.0)
-    rental_fees_pct = st.number_input("Rental taxes & fees (% of base)", 0.0, 60.0, 22.0, step=0.5)
-    lodging_nightly = st.number_input("Lodging nightly ($/night)", 0.0, 1000.0, 150.0, step=5.0)
-    lodging_fees_total = st.number_input("One‑time lodging fees ($)", 0.0, 1000.0, 60.0, step=5.0)
-    gas_price = st.number_input("Gas price ($/gal)", 0.0, 10.0, 4.50, step=0.05)
-    mpg = st.number_input("Vehicle MPG", 5.0, 80.0, 30.0, step=0.5)
-    park_fee = st.number_input("NPS entrance fee ($ per vehicle)", 0.0, 200.0, 30.0, step=5.0)
-    ferry_total = st.number_input("Estimated ferry total ($ car + driver)", 0.0, 300.0, 50.0, step=1.0)
+
+    rental_daily = st.number_input("Avis daily base rate ($/day)", 0.0, 1000.0, 55.0, step=1.0, key="rental_daily")
+    rental_fees_pct = st.number_input("Rental taxes & fees (% of base)", 0.0, 60.0, 22.0, step=0.5, key="rental_fees_pct")
+    lodging_nightly = st.number_input("Lodging nightly ($/night)", 0.0, 1000.0, 150.0, step=5.0, key="lodging_nightly")
+    lodging_fees_total = st.number_input("One-time lodging fees ($)", 0.0, 1000.0, 60.0, step=5.0, key="lodging_fees_total")
+    gas_price = st.number_input("Gas price ($/gal)", 0.0, 10.0, 4.50, step=0.05, key="gas_price")
+    mpg = st.number_input("Vehicle MPG", 5.0, 80.0, 30.0, step=0.5, key="mpg")
+    park_fee = st.number_input("NPS entrance fee ($ per vehicle)", 0.0, 200.0, 30.0, step=5.0, key="park_fee")
+    ferry_total = st.number_input("Estimated ferry total ($ car + driver)", 0.0, 300.0, 50.0, step=1.0, key="ferry_total")
+
+
 
 
 # --- tabs ---
