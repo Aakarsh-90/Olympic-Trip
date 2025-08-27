@@ -147,6 +147,47 @@ with planner:
     st.success(f"**Estimated trip total:** {usd(b['total'])}  (≈ {usd(b['per_person'])} per person)")
 
     st.markdown("---")
+    st.subheader("Smart-paste live quotes → auto-fill")
+st.caption("Open your Booking/Expedia/Airbnb/Avis page, copy all visible text (Ctrl+A then Ctrl+C), paste below. We'll try to detect prices.")
+paste = st.text_area("Paste page text here", height=180, placeholder="Paste anything from the quote page…")
+
+if paste:
+    import re
+    # Find $ amounts, keep first 10 unique (sorted high→low)
+    amounts = re.findall(r"\$\s*([0-9]{1,3}(?:,[0-9]{3})*(?:\.[0-9]{1,2})?|[0-9]+(?:\.[0-9]{1,2})?)", paste)
+    vals = []
+    for a in amounts:
+        try:
+            v = float(a.replace(",", ""))
+            if v not in vals:
+                vals.append(v)
+        except:
+            pass
+    vals = sorted(vals, reverse=True)[:10]
+
+    if vals:
+        st.write("Detected amounts:", vals)
+        colx, coly, colz, colw = st.columns(4)
+        with colx:
+            pick_lodging = st.selectbox("Choose lodging *nightly*", [None] + sorted(vals))
+        with coly:
+            pick_lodge_fees = st.selectbox("Choose *one-time* lodging fees", [0.0] + sorted(vals))
+        with colz:
+            pick_avis_daily = st.selectbox("Choose Avis daily", [None] + sorted(vals))
+        with colw:
+            pick_ferry = st.selectbox("Choose ferry total (optional)", [0.0] + sorted(vals))
+
+        if st.button("Apply selections to sidebar"):
+            if pick_lodging is not None:
+                st.session_state["lodging_nightly"] = pick_lodging or st.session_state.get("lodging_nightly", 0.0)
+            st.session_state["lodging_fees_total"] = pick_lodge_fees
+            if pick_avis_daily is not None:
+                st.session_state["rental_daily"] = pick_avis_daily or st.session_state.get("rental_daily", 0.0)
+            st.session_state["ferry_total"] = pick_ferry
+            st.toast("Applied to sidebar. Adjust anything as needed.", icon="✅")
+    else:
+        st.info("No dollar amounts found. Try copying the page again after prices load, or paste a simpler section.")
+
     st.caption("Quick links to fetch live prices for *your* dates (opens in new tab)")
     city = st.selectbox("Lodging hub", ["Port Angeles, Washington, United States of America", "Sequim, Washington, United States of America", "Forks, Washington, United States of America"]) 
     end = start + dt.timedelta(days=int(nights))
