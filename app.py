@@ -132,19 +132,15 @@ with planner:
     b = cost_breakdown(nights, people, use_ferry, extra_miles,
                        rental_daily, rental_fees_pct, lodging_nightly, lodging_fees_total,
                        gas_price, mpg, park_fee, ferry_total)
-    st.write(
-        f"**Rental (base):** {usd(b['rental_base'])}  
-"
-        f"**Rental (tax/fees):** {usd(b['rental_fees'])}  
-"
-        f"**Fuel:** {usd(b['fuel_cost'])}  
-"
-        f"**Lodging:** {usd(b['lodging_total'])}  
-"
-        f"**Park fee:** {usd(b['park_fee'])}  
-"
-        f"**Ferry:** {usd(b['ferry_total'])}"
-    )
+    st.write(f"""
+**Rental (base):** {usd(b['rental_base'])}  
+**Rental (tax/fees):** {usd(b['rental_fees'])}  
+**Fuel:** {usd(b['fuel_cost'])}  
+**Lodging:** {usd(b['lodging_total'])}  
+**Park fee:** {usd(b['park_fee'])}  
+**Ferry:** {usd(b['ferry_total'])}
+""")
+
     st.success(f"**Estimated trip total:** {usd(b['total'])}  (≈ {usd(b['per_person'])} per person)")
 
     st.markdown("---")
