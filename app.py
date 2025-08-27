@@ -259,39 +259,69 @@ with compare:
         with c4: st.link_button("Avis (5th Ave)", avis_location_link("se2"))
 
 with itinerary:
-    st.subheader("Easy, relaxing 3‑day plan (veg, no eggs)")
-    st.markdown(
-        """
-### Day 1 – Seattle → Lake Crescent → Port Angeles
-- Optional **ferry to Bainbridge** (pretty) or drive via Tacoma (simpler timing).
-- **Marymere Falls** (≈1.8 mi RT, mostly easy). Picnic at **Lake Crescent**.
-- Check in around Port Angeles; sunset stroll on the waterfront.
+    st.subheader("Detailed 3-Day Olympic NP Itinerary (veg, no eggs)")
 
-### Day 2 – Hoh Rain Forest + Beach (tide‑timed)
-- **Hall of Mosses (0.8 mi)** and **Spruce Nature Trail (1.2 mi)** – lush, flat loops.
-- Drive to the coast for **Rialto** or **Second Beach** near La Push; go near **low tide**.
+    st.markdown("### Day 1 — Seattle → Port Angeles (base: Port Angeles)")
+    st.markdown("""
+**06:30–07:00** — Depart Seattle.  
+• Ferry: catch 6:45–7:30 Bainbridge sailing.  
+• Tacoma route: cross Tacoma by 7:30 to avoid jams.  
 
-### Day 3 – Hurricane Ridge → Seattle
-- Short walks at **Hurricane Ridge** (e.g., Big Meadow, Cirque Rim) for alpine views.
-- Return via Tacoma if you want to avoid ferry timing.
+**10:30–12:00** — Stop at Lake Crescent. Walk **Marymere Falls** (1.8 mi RT).  
+_Carry_: light rain jacket, water, snack bar.  
 
----
-#### Veg/egg‑free eats (always check menus same‑day)
-- **Port Angeles:** New Day Eatery (veg/vegan options), Next Door Gastropub (salads, veggie mains), Spruce (seasonal plates). 
-- **Sequim:** Nourish (great for special diets), Alder Wood Bistro (seasonal, ask for veg), Sawadee Thai.
-- **Forks/nearby:** Simple options like Pacific Pizza or grocery‑store deli; Kalaloch Lodge’s **Creekside Restaurant** lists veg‑friendly items.
+**12:00–13:00** — Picnic lunch at Lake Crescent (buy in Seattle or Port Angeles).  
 
-#### Handy links
-- **NPS Olympic fees & current conditions**
-- **WSDOT Seattle ↔ Bainbridge fares**
-- **NOAA tides (La Push)**
-        """
-    )
+**13:30–17:00** — Check into Port Angeles lodging. Rest / explore waterfront.  
+Optional: **Olympic Discovery Trail** stroll (flat).  
+
+**18:30** — Dinner: **New Day Eatery** (veg/vegan) or **Next Door Gastropub**.
+    """)
+
+    st.markdown("### Day 2 — Port Angeles → Hoh Rain Forest → Beaches (base: Forks/La Push)")
+    st.markdown("""
+**07:00** — Breakfast in Port Angeles. Pack snacks + water.  
+**07:30–10:00** — Drive to Hoh Rain Forest Visitor Center (~2.5 hr).  
+
+**10:00–12:00** — Hike **Hall of Mosses (0.8 mi)** & **Spruce Trail (1.2 mi)**.  
+_Carry_: rain jacket, bug spray, water, snacks.  
+
+**12:00–13:00** — Picnic lunch (no restaurants nearby).  
+
+**13:00–15:00** — Drive to Rialto Beach / Second Beach (La Push).  
+**15:00–17:00** — Explore tidepools near low tide.  
+
+**Evening** — Overnight in Forks or La Push.  
+Dinner: pizza in Forks or Kalaloch Lodge Creekside (veg options).
+    """)
+
+    st.markdown("### Day 3 — Forks → Hurricane Ridge → Seattle")
+    st.markdown("""
+**06:30** — Leave Forks early.  
+**09:30–12:00** — **Hurricane Ridge**: short loops (Big Meadow, Cirque Rim).  
+_Carry_: jacket (windy), sunscreen, water.  
+
+**12:30–13:30** — Lunch in Port Angeles (cafes / groceries).  
+
+**13:30–16:30** — Drive back to Seattle.  
+Traffic tip: avoid Bainbridge ferry after 4 pm weekends; Tacoma route is safer.
+    """)
+
+    st.markdown("---")
+    st.markdown("#### General Tips")
+    st.markdown("""
+- **Best bases**: Night 1 — Port Angeles; Night 2 — Forks/La Push.  
+- **Traffic**: leave Seattle before 7 am; head back before 1 pm to beat rush.  
+- **Food strategy**: Port Angeles/Sequim = best veg eats. Forks = limited. Always pack picnic supplies.  
+- **What to carry**: layers, waterproof jacket, sneakers/hiking shoes, refillable water bottles, snacks, sun protection, bug spray, tide chart.
+    """)
+
     c1, c2, c3 = st.columns(3)
     with c1: st.link_button("NPS Fees", "https://www.nps.gov/olym/planyourvisit/fees.htm")
     with c2: st.link_button("Conditions", "https://www.nps.gov/olym/planyourvisit/conditions.htm")
     with c3: st.link_button("La Push Tides", "https://tidesandcurrents.noaa.gov/noaatidepredictions.html?id=9442396")
 
-    st.caption("Tip: for strict veg, pack picnic supplies from PA/Sequim groceries. Menus change seasonally.")
+    st.caption("Tip: for strict veg, stock up at Port Angeles/Sequim groceries before heading deeper.")
+
 
 st.toast("Loaded: compare dates, itinerary, and live‑price link buttons.", icon="✅")
